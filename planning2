@@ -1,0 +1,50 @@
+8/03/2023, 9:00-9:50 NZST
+
+Requirements:
+
+Minimum 10x10 grid
+Must contain 2-size 2 ships, 1 size 3 ship 1 size 4 ship and 1 size 5 ship
+The game will allow the players to place their own ships at co-ordinates that are based on user input
+The game must inform the player when they have hit or miss and mark so on one of the player’s grids.
+You must have a win condition that will tell the players who has won.
+
+Ideas:
+
+Use python as the programming language
+Ascii graphics for battleships, arena, possible animated water and title screen
+Playable with both an AI and another player
+Study different versions of battleships, and choose one
+Use terminal/seperate game window, tkinter or pygame?
+visually appealing ascii/unicode graphics with background and foreground colour
+Use arrays to store the position of the battleships
+Use either mouse or grid position, e.g.(a5) to both place and shoot enemy ships
+Store player input in a list, so that it can be refrenced and used as a grid position
+Adding advantages, such as radar and different types of ammunition that can affect certain types of battleship
+Torpedoes, light ammunition and heavy ammunition are possible ammunition types, as well as mines, which will have a negative effect on the player taking a shot
+Win condition is when one player loses all of their ships, or when the opposing player loses all of their ammunition
+Break seperate functions into seperate python files
+Research other python battleships programs and take code/inspiration from them, crediting them in the process
+
+803/2023, 1:30-1:15 NZST
+
+Unicode Graphics:
+
+Ship graphics:
+The ships include horizontal and vertical versions of; 
+Mine(size 1)
+carrierx2(size 2)
+Subrmarine(size 3)
+Battleship(size 4)
+Destroyer(size 5)
+
+Horizontal:
+✲, <>, <>, <◯>, <◯◯>, <◯◯◯>
+
+Vertical:
+✲, Λ  Λ  Λ  Λ  Λ
+    V, V, ⬯ ⬯ ⬯
+          V, ⬯ ⬯
+             V, ⬯
+                V,
+
+thie game wil be displayed in a terminal window, using unicode characters, with UTF-8 encoding
