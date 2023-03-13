@@ -1,0 +1,10 @@
+# Some variables to define the height and width of the array in characters
+GRID_HEIGHT = 10
+GRID_WIDTH = 10
+
+# Creating the array
+arr = [["~" for y in range(GRID_HEIGHT)] for x in range(GRID_WIDTH)]
+
+# Print the array
+for row in arr:
+    print(array[x][y])
