@@ -1,0 +1,4 @@
+22/03/2023  9:00-9:50 NZST
+1. Use arrow keys and other keys to rotate the ships
+2. Use the keyboard module to take key inputs- https://pypi.org/project/keyboard/
+3. Stop mines from spawning on top of one another
