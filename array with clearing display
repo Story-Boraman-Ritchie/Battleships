@@ -1,0 +1,54 @@
+# Importing the "randint" function from the random library, which is used to place the mines
+from random import randint
+
+# Importing the "os" module which can be used to refresh the game screen
+import os
+
+# Variables that define the height and width of the array
+GRID_HEIGHT = 10
+GRID_WIDTH = 10
+
+# Defining the number of mines in the array
+NUM_MINES = 5
+
+# Defining characters for the Unicode graphics
+sea_char = "~"
+ship_char = "#"
+mine_char = "✱"
+
+# Creating the arrays, "array" is for logical functions and "disp_array" is to be displayed
+array = [[sea_char for y in range(GRID_HEIGHT)] for x in range(GRID_WIDTH)]
+disp_array = [[sea_char for y in range(GRID_HEIGHT)] for x in range(GRID_WIDTH)]
+
+# Place mines in random tiles thoughout the map
+for i in range(NUM_MINES):
+  array[randint(0, GRID_WIDTH - 1)][randint(0, GRID_HEIGHT - 1)] = mine_char
+
+# Defining the function to place the ships
+# If the ship is placed on the same tile as the mine, then the ship is not printed
+def place_ship(x, y):
+  if not array[x][y] == mine_char:
+    disp_array[x][y] = ship_char
+
+while True:
+  os.system('cls' if os.name == 'nt' else 'clear')  # Clear the game screen
+  
+  # Print the current state of the game
+  for y in range(GRID_HEIGHT):
+    for x in range(GRID_WIDTH):
+      print(disp_array[y][x], end=" ")
+    print()
+
+  # Keep asking for input until valid input is entered
+  while True:
+    playerinput = input("coordinates: ")
+    try:
+      inputx, inputy = map(int, playerinput)
+      place_ship(inputx, inputy)
+      break
+    except ValueError:
+      print("Please try again using two integers from 0-9: ")
+      
+
+  # Print the updated state of the game
+  os.system('cls' if os.name == 'nt' else 'clear')  # Clear the game screen
