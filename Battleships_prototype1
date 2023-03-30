@@ -1,0 +1,101 @@
+import os
+import time
+import keyboard
+
+GRID_HEIGHT = 10
+GRID_WIDTH = 10
+
+SEA_CHAR = "~"
+SHIP_CHAR = "#"
+HITSHOT_CHAR = "H"
+MISSSHOT_CHAR = "/"
+
+ship_length = 3
+cursor_direction = 0
+cursorx = 0
+cursory = 0
+
+cursor_array = [[" " for y in range(GRID_HEIGHT)] for x in range(GRID_WIDTH)]
+# "disp_array" is short for "display_array"
+disp_array = [[SEA_CHAR for y in range(GRID_HEIGHT)]
+              for x in range(GRID_WIDTH)]
+
+
+def place_ship(ship_length, cursorx, cursory, cursor_direction):
+
+  for i in range(ship_length):
+    if cursor_direction == 0:
+      disp_array[cursorx + i][cursory] = SHIP_CHAR
+      disp_array[cursorx + i][cursory - 1] = SEA_CHAR
+      disp_array[cursorx + i][cursory + 1] = SEA_CHAR
+
+    elif cursor_direction == 1:
+      disp_array[cursorx][cursory + i] = SHIP_CHAR
+      disp_array[cursorx - 1][cursory + i] = SEA_CHAR
+      disp_array[cursorx + 1][cursory + i] = SEA_CHAR
+
+    if cursor_direction == 0:
+      if ship_length < 0:
+        if 1 > GRID_WIDTH + cursorx:
+          cursorx -= GRID_WIDTH + cursorx
+        elif ship_length > GRID_HEIGHT + cursory:
+          cursory -= GRID_HEIGHT + cursory
+    elif cursor_direction == 1:
+      if ship_length > 0:
+        if ship_length > GRID_WIDTH - cursorx:
+          cursorx -= GRID_WIDTH - cursorx
+        elif 1 > GRID_HEIGHT - cursory:
+          cursory -= GRID_HEIGHT - cursory
+
+
+def turn(player):
+  global disp_array
+
+
+import keyboard
+
+
+def handle_input():
+  global cursor_direction, cursorx, cursory, pressed
+
+  time.sleep(0.5)
+  keypress = keyboard.read_event()
+  if keypress.name == "q":
+    cursor_direction -= 1
+  elif keypress.name == "e":
+    cursor_direction += 1
+  elif keypress.name == "w":
+    cursorx -= 1
+  elif keypress.name == "a":
+    cursory -= 1
+  elif keypress.name == "s":
+    cursorx += 1
+  elif keypress.name == "d":
+    cursory += 1
+
+
+while True:
+
+  if cursor_direction > 1:
+    cursor_direction = 0
+  elif cursor_direction < 0:
+    cursor_direction = 1
+
+  if cursorx < 0:
+    cursorx += 1
+  elif cursorx > GRID_WIDTH:
+    cursorx -= 1
+  elif cursory < 0:
+    cursory += 1
+  elif cursory > GRID_HEIGHT:
+    cursory -= 1
+
+  handle_input()
+  place_ship(ship_length, cursorx, cursory, cursor_direction)
+  os.system('cls' if os.name == 'nt' else 'clear')
+
+  for y in range(GRID_HEIGHT):
+    for x in range(GRID_WIDTH):
+      print(disp_array[y][x], end=" ")
+    print()
+  print(cursorx, cursory, cursor_direction)
