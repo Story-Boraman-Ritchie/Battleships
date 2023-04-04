@@ -1,0 +1,21 @@
+I have decided to split the game into two main gameloops;
+1. Placing the battleships
+2. Shooting the opponent
+
+I have created a new fuction for printing an array, called "print_array()"
+I changed the cursor direction checking to now use XOR, and used it for the "player" value as well
+I added a "config.ini" file so some variables such as the;
+Character values, 
+Grid dimensions,
+And starting values
+Can be customised from startup.
+I also added a 0.5 second delay to inputs with the built-in "time" module
+And an endscreen that displays "GAME OVER" in an ASCII font, as well as the player that won.
+Renamed the "MISSSHOT" and "HITSHOT" constants to "MISS_SHOT" and "HIT_SHOT"
+Added keybindings in the "config.ini file.
+Added text cusomisation to the "config.ini" file.
+Continue to support any size of grid and ship, not resricting it to 10x10 and up to size 5 ships. Ships with a size of 0 will not be allowed, however.
+
+Poissible implementations:
+Create a text document to hold the values for player "a" and player "b", both will contain two grids with one being the player's ships and the other being the other's player's ships from that player's pov.
+Create a system to both write and interpret data from that file.
